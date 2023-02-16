@@ -1,5 +1,5 @@
 import movies from './data/movies.json';
-import { fetchWithTimeout } from './services';
+import fetchWithTimeout from './services';
 
 export const fetchMovies = () => {
   const resolveFunction = () => movies;
