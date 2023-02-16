@@ -2,7 +2,7 @@ import { fetchWithTimeout, fetchMovies, fetchBooks } from './services';
 const movies = require('./data/movies.json');
 
 export function getBooksAndMovies() {
-  return new Promise.all([
+  return Promise.all([
     fetchBooks(),
     fetchMovies()
   ])
@@ -10,26 +10,30 @@ export function getBooksAndMovies() {
       books,
       movies
     }))
-    .catch(error => console.log("Error fetching books and movies", error));
+    .catch(error => {
+      console.log("Error fetching books and movies", error)
+    });
 }
 
 const getBooksAndMoviesPromise = getBooksAndMovies();
-getBooksAndMoviesPromise.then( results =>
+getBooksAndMoviesPromise.then( results => {
   console.log('getBooksAndMoviesPromise', results)
-)
+})
 .catch(error => console.log(error));
 
 export function getBooksOrMovies() {
-  return new Promise.race([
+  return Promise.race([
     fetchBooks(),
     fetchMovies()
   ])
   .then(results => results)
-  .catch(error => console.log("Error waiting for the promise race", error));
+  .catch(error => {
+    console.log("Error waiting for the promise race", error)
+  });
 }
 
 const getBooksOrMoviesPromise = getBooksOrMovies();
 getBooksOrMoviesPromise.then( results =>
-  console.log('getBooksAndMoviesPromise', results)
+  console.log('getBooksOrMoviesPromise', results)
 )
 .catch(error => console.log(error));
