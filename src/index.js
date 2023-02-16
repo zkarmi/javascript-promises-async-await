@@ -14,8 +14,8 @@ export function getBooksAndMovies() {
 }
 
 const getBooksAndMoviesPromise = getBooksAndMovies();
-getBooksAndMoviesPromise.then( result =>
-  console.log('getBooksAndMoviesPromise', result)
+getBooksAndMoviesPromise.then( results =>
+  console.log('getBooksAndMoviesPromise', results)
 )
 .catch(error => console.log(error));
 
@@ -29,7 +29,7 @@ export function getBooksOrMovies() {
 }
 
 const getBooksOrMoviesPromise = getBooksOrMovies();
-getBooksOrMoviesPromise.then( result =>
-  console.log('getBooksAndMoviesPromise', result)
+getBooksOrMoviesPromise.then( results =>
+  console.log('getBooksAndMoviesPromise', results)
 )
 .catch(error => console.log(error));
